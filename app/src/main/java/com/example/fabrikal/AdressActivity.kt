@@ -12,7 +12,7 @@ class AdressActivity : AppCompatActivity() {
         imageView7.setOnClickListener{
             finish()
         }
-        
+
         button5.setOnClickListener{
             val intent = Intent(this,GpsActivity::class.java)
             startActivity(intent)

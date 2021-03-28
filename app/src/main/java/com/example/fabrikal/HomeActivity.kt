@@ -9,7 +9,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        button3.setOnClickListener{
+        /*button3.setOnClickListener{
             val intent = Intent(this,AdressActivity::class.java)
             startActivity(intent)
         }
@@ -27,6 +27,6 @@ class HomeActivity : AppCompatActivity() {
         }
         imageView12.setOnClickListener{
             finish()
-        }
+        }*/
     }
 }

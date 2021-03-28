@@ -9,6 +9,7 @@ class GoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go)
+
         go.setOnClickListener{
             val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
