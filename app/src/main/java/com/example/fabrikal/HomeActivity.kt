@@ -9,24 +9,31 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        /*button3.setOnClickListener{
-            val intent = Intent(this,AdressActivity::class.java)
-            startActivity(intent)
+
+        showHome()
+
+        homeButton.setOnClickListener {
+            showHome()
         }
-        button4.setOnClickListener{
-            val intent = Intent(this,CreditCardActivity::class.java)
-            startActivity(intent)
+        searchButton.setOnClickListener {
+
         }
-        imageView8.setOnClickListener{
-            val intent = Intent(this, MainViewActivity::class.java)
-            startActivity(intent)
+        shoppingButton.setOnClickListener {
+
         }
-        button14.setOnClickListener{
-            val intent = Intent(this,GoActivity::class.java)
-            startActivity(intent)
+        profileButton.setOnClickListener {
+                showProfile()
         }
-        imageView12.setOnClickListener{
-            finish()
-        }*/
+    }
+
+
+    private fun showProfile(){
+        val fragment = ProfileFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.contentLayout,fragment,"profile").commit()
+    }
+
+    private fun showHome(){
+        val fragment = HomeFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.contentLayout,fragment,"home").commit()
     }
 }
