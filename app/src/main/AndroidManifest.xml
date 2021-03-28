@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fabrikal">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Fabrikal">
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".GoActivity" />
+        <activity android:name=".ConfirmShopActivity" />
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/title_activity_shop"
+            android:theme="@style/Theme.Fabrikal.NoActionBar" />
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".MainViewActivity" />
+        <activity android:name=".CreditCardActivity" />
+        <activity android:name=".GpsActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".AdressActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
