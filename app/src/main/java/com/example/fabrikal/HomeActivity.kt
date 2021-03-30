@@ -16,10 +16,12 @@ class HomeActivity : AppCompatActivity() {
             showHome()
         }
         searchButton.setOnClickListener {
-
+            val intent = Intent(this,SearchActivity::class.java)
+            startActivity(intent)
         }
         shoppingButton.setOnClickListener {
-
+            val intent = Intent(this,ProductActivity::class.java)
+            startActivity(intent)
         }
         profileButton.setOnClickListener {
                 showProfile()

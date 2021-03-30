@@ -97,7 +97,7 @@
         android:layout_height="44dp"
         android:layout_marginTop="464dp"
         android:ems="10"
-        android:hint="passwor"
+        android:hint="password"
         android:inputType="textPassword"
         android:text="Contraseña"
         app:layout_constraintEnd_toEndOf="parent"

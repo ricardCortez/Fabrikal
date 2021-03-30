@@ -4,11 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    ...
-    <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
@@ -17,15 +16,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Fabrikal" >
-        //android:theme="@style/Theme.Fabrikal.NoActionBar">
-        <activity android:name=".LoginActivity"/>
+        android:theme="@style/Theme.Fabrikal">
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".GoActivity" />
         <activity android:name=".ConfirmShopActivity" />
-
-
-
-        <activity android:name=".ProductActivity" />
         <activity android:name=".CreditCardActivity" />
         <activity android:name=".GpsActivity" />
         <activity android:name=".HomeActivity" />
@@ -41,5 +37,3 @@
     </application>
 
 </manifest>
-
-

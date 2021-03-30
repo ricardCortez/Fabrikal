@@ -18,5 +18,9 @@
         <item name="android:background">@drawable/bg_cerrar_sesion</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="buttonStyleSearch" parent="buttonStyle">
+        <item name="android:background">@drawable/bg_cerrar_sesion</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>

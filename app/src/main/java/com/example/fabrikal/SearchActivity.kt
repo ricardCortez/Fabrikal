@@ -3,14 +3,14 @@ package com.example.fabrikal
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_product.*
+import kotlinx.android.synthetic.main.activity_search.*
 
-class ProductActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product)
-        imag_atras_product.setOnClickListener {
-            val intent = Intent(this,HomeActivity::class.java)
+        setContentView(R.layout.activity_search)
+        imag_atras_busqueda.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
