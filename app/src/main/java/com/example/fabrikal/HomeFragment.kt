@@ -1,5 +1,6 @@
 package com.example.fabrikal
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -51,7 +52,8 @@ class HomeFragment : Fragment() {
 
         shoesHomeAdapter = ShoesHomeAdapter(shoeList)
         shoesHomeAdapter.onItemClick = { shoeHomeItem ->
-            //haz lo q necesites
+            val intent = Intent(activity,ProductActivity::class.java)
+            startActivity(intent)
 
         }
         shoesRecyclerView.adapter = shoesHomeAdapter

@@ -120,7 +120,7 @@
                 android:layout_marginLeft="16dp"/>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/button_comprar"
                 style="@style/buttonStyleCerrar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

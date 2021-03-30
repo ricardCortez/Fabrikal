@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fabrikal">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".FinCompraActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity android:name=".ProductActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".GoActivity" />

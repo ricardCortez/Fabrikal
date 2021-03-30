@@ -13,5 +13,9 @@ class ProductActivity : AppCompatActivity() {
             val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
         }
+        button_comprar.setOnClickListener {
+            val intent = Intent(this,FinCompraActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
