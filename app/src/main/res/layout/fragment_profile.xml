@@ -10,9 +10,10 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:text="Mi cuenta"
-        app:layout_constraintStart_toEndOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -23,7 +24,7 @@
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:srcCompat="@drawable/enano" />
 
     <TextView
         android:id="@+id/textView10"
@@ -50,64 +51,75 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Mi direccion de envio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="377dp"
-        android:layout_height="111dp"
+        android:id="@+id/button_direccion"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:text="DIRECCION"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/text_tarjeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="10dp"
         android:text="Mi tarjeta guardada"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="55dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:layout_constraintTop_toBottomOf="@+id/button_direccion" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="377dp"
-        android:layout_height="111dp"
+        android:id="@+id/button_tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="TARJETA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/text_tarjeta" />
 
     <Button
-        android:id="@+id/button14"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_llamanos"
+        style="@style/buttonStyleGeneral"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Cerrar sesion"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Llamanos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button_tarjeta" />
+
+    <Button
+        android:id="@+id/button_cerrar_sesion"
+        style="@style/buttonStyleCerrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Cerrar sesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_llamanos" />
+
 
 </android.support.constraint.ConstraintLayout>

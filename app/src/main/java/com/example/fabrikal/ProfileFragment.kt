@@ -15,11 +15,6 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +32,25 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button4.setOnClickListener {
+        button_direccion.setOnClickListener {
+            val intent = Intent(activity,AdressActivity::class.java)
+            startActivity(intent)
+        }
+
+        button_tarjeta.setOnClickListener {
+            val intent = Intent(activity,GpsActivity::class.java)
+            startActivity(intent)
+        }
+
+        button_llamanos.setOnClickListener {
             val phone = "+34666777888"
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
             startActivity(intent)
         }
-
+        button_cerrar_sesion.setOnClickListener {
+            val intent = Intent(activity,MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

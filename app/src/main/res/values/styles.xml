@@ -8,9 +8,15 @@
      <item name="android:paddingStart">20dp</item>
      <item name="android:paddingEnd">20dp</item>
  </style>
-
     <style name="entrarStyle" parent="buttonStyle">
         <item name="android:background">@drawable/bg_entrar</item>
+    </style>
+    <style name="buttonStyleGeneral" parent="buttonStyle">
+        <item name="android:background">@drawable/bg_llamanos</item>
+    </style>
+    <style name="buttonStyleCerrar" parent="buttonStyle">
+        <item name="android:background">@drawable/bg_cerrar_sesion</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

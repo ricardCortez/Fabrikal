@@ -50,7 +50,7 @@
             android:id="@+id/textView27"
             android:layout_width="match_parent"
             android:layout_height="63dp"
-            android:background="@android:color/secondary_text_dark"
+            android:background="@android:color/transparent"
             android:text="Direccion"
             android:textSize="24sp" />
 

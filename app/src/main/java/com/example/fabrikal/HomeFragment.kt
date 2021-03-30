@@ -1,5 +1,6 @@
 package com.example.fabrikal
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -19,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     lateinit var shoesHomeAdapter : ShoesHomeAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
