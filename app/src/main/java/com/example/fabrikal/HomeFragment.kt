@@ -50,6 +50,10 @@ class HomeFragment : Fragment() {
         shoeList.add(ShoeHomeItem("ABCD6","ESTO ES UN ZAPATO","70.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
 
         shoesHomeAdapter = ShoesHomeAdapter(shoeList)
+        shoesHomeAdapter.onItemClick = { shoeHomeItem ->
+            //haz lo q necesites
+
+        }
         shoesRecyclerView.adapter = shoesHomeAdapter
 
     }

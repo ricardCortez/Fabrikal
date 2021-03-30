@@ -11,13 +11,24 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_shoe_grid_item.view.*
 
 class ShoesHomeAdapter(val lista : List<ShoeHomeItem> ) : RecyclerView.Adapter<ShoesHomeAdapter.ViewHolder>() {
+    var onItemClick: ((ShoeHomeItem) -> Unit)? = null
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+        init {
+            itemView.setOnClickListener {
+
+                onItemClick?.invoke(lista[adapterPosition])
+            }
+        }
+
         fun bind(item: ShoeHomeItem){
             Picasso.get().load(item.urlImagen).into(itemView.photoImageView)
             itemView.titleTextView.text = item.brand
             itemView.descripcionTextView.text = item.descripcion
             itemView.precioTextView.text = item.precio
+
         }
 
     }
