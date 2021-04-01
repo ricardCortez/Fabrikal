@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
         }
 
         button_tarjeta.setOnClickListener {
-            val intent = Intent(activity,GpsActivity::class.java)
+            val intent = Intent(activity,CreditCardActivity::class.java)
             startActivity(intent)
         }
 
