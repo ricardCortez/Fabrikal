@@ -16,5 +16,13 @@ class SignInActivity : AppCompatActivity() {
         imageView5.setOnClickListener{
             finish()
         }
+        buttonAddCreditCard.setOnClickListener {
+            val intent = Intent( this, CreditCardActivity::class.java)
+            startActivity(intent)
+        }
+        buttonAddAdrres.setOnClickListener {
+            val intent = Intent(this, AdressActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
