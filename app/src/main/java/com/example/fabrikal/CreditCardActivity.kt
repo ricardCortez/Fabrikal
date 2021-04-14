@@ -10,7 +10,7 @@ class CreditCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_credit_card)
         imageView13.setOnClickListener{
-            val intent = Intent(this,HomeActivity::class.java)
+            val intent = Intent(this,SignInActivity::class.java)
             startActivity(intent)
         }
     }

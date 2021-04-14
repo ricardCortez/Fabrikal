@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_adress.*
+import kotlinx.android.synthetic.main.activity_credit_card.*
 
 class AdressActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,10 @@ class AdressActivity : AppCompatActivity() {
 
         button5.setOnClickListener{
             val intent = Intent(this,GpsActivity::class.java)
+            startActivity(intent)
+        }
+        imageView7.setOnClickListener{
+            val intent = Intent(this,SignInActivity::class.java)
             startActivity(intent)
         }
     }
