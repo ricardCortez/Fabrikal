@@ -2,20 +2,21 @@ package com.example.fabrikal;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//import com.android.volley.Request;
-//import com.android.volley.RequestQueue;
-//import com.android.volley.Response;
-//import com.android.volley.VolleyError;
-//import com.android.volley.toolbox.JsonArrayRequest;
-//import com.android.volley.toolbox.StringRequest;
-//import com.android.volley.toolbox.Volley;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,7 +70,6 @@ public class ProductosBuscarActivity extends AppCompatActivity {
                 e17.setText("");
                 e18.setText("");
                 e19.setText("");
-                e20.setText("");
                 e21.setText("");
                 b=(Button) findViewById(acceso);
                 buscar = (Button)findViewById(btnBuscar);
@@ -108,11 +108,11 @@ public class ProductosBuscarActivity extends AppCompatActivity {
         final String CONTRASEÑA=e17.getText().toString();
         final String NRO_TARJETA=e18.getText().toString();
         final String VIGENCIA_TARJETA=e19.getText().toString();
-        final String FOTO_USUARIO=e20.getText().toString();
+
 
 
         String url="http://192.168.1.33/FABRIKALSHOES/ingreso.php?dni="+DNI+"nombre="+NOMBRE+"&apellido="+APELLIDO+"&tipo_direccion="+TIPO_DIRECCION+"&direccion="+DIRECCION+"&nro_lote="+NRO_LOTE
-                +PROVINCIA+"&provincia="+DISTRITO+"&provincia="+CELULAR+"&celular="+EMAIL+"&email="+CONTRASEÑA+"&contraseña="+NRO_TARJETA+"&nro_tarjeta="+VIGENCIA_TARJETA+"&vigencia="+FOTO_USUARIO+"&foto_usuario=";
+                +PROVINCIA+"&provincia="+DISTRITO+"&provincia="+CELULAR+"&celular="+EMAIL+"&email="+CONTRASEÑA+"&contraseña="+NRO_TARJETA+"&nro_tarjeta="+VIGENCIA_TARJETA+"&vigencia=";
         RequestQueue servicio= Volley.newRequestQueue(this);
         StringRequest respuesta=new StringRequest(
                 Request.Method.GET, url, new Response.Listener<String>() {
