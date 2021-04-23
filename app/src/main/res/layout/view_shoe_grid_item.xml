@@ -7,7 +7,7 @@
     >
 
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.ConstraintLayout
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
     android:background="@drawable/bg_shoe_grid_item"
@@ -51,6 +51,6 @@ android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:textColor="#B93F3F" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.ConstraintLayout>
 
 </RelativeLayout>

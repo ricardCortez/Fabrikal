@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        shoesRecyclerView.layoutManager = GridLayoutManager(context,2)
+        //shoesRecyclerView.layoutManager = GridLayoutManager(context,2)
 
         var shoeList : MutableList<ShoeHomeItem> = mutableListOf()
         shoeList.add(ShoeHomeItem("ABCD","ESTO ES UN ZAPATO","10.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
-        shoesRecyclerView.adapter = shoesHomeAdapter
+        //shoesRecyclerView.adapter = shoesHomeAdapter
 
     }
 
