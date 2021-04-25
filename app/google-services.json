@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "964216303758",
+    "firebase_url": "https://fabrikalshoes-default-rtdb.firebaseio.com",
+    "project_id": "fabrikalshoes",
+    "storage_bucket": "fabrikalshoes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964216303758:android:59e134eab4a7ede0a419df",
+        "android_client_info": {
+          "package_name": "com.example.fabrikal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964216303758-b939de6187pb2slnbj5kq7j225nbdvhu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fabrikal",
+            "certificate_hash": "278f21a7d0b5a8b8096b27d0024085a47f229214"
+          }
+        },
+        {
+          "client_id": "964216303758-bn7tqjro8vma8fanj2l2fqegt08bjurm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh2JW8J_i6mMi-4gqx-g5TjukgxnCaUPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964216303758-bn7tqjro8vma8fanj2l2fqegt08bjurm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txt_dniUsuario" type="id" />
+    <item name="txt_nombreUsuario" type="id" />
+    <item name="txt_apellidoUsuario" type="id" />
+    <item name="txt_tipo_direcionUsurio" type="id" />
+    <item name="txt_direccionUsuario" type="id" />
+    <item name="txt_nro_loteUsuario" type="id" />
+    <item name="txt_provinciaUsuario" type="id" />
+    <item name="txt_distritoUsuario" type="id" />
+    <item name="txt_celularUsuario" type="id" />
+    <item name="txt_emailUsuario" type="id" />
+    <item name="txt_contraseñaUsuario" type="id" />
+    <item name="txt_nro_tarjetaUsuario" type="id" />
+    <item name="txt_vigencia_tarjetaUsuario" type="id" />
+    <item name="lv_datosUsuarios" type="id" />
+    <item name="icon_add" type="id" />
+    <item name="icon_save" type="id" />
+    <item name="icon_delete" type="id" />
+</resources>
