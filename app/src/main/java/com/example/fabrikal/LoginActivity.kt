@@ -10,11 +10,15 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        button.setOnClickListener{
+        buttonIngresar.setOnClickListener{
             val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
         }
-        imageView6.setOnClickListener{
+        buttonCrearCuenta.setOnClickListener{
+            val intent = Intent(this,SignInActivity::class.java)
+            startActivity(intent)
+        }
+        imageBack.setOnClickListener{
             finish()
         }
     }

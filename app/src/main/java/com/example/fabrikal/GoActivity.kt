@@ -11,11 +11,11 @@ class GoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go)
 
-        go.setOnClickListener{
+        buttonIniciarSeccionEmail.setOnClickListener{
             val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
-        textView6.setOnClickListener{
+        buttonRegistrarte.setOnClickListener{
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
