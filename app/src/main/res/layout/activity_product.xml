@@ -1,133 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProductActivity">
 
     <ImageView
         android:id="@+id/imag_atras_product"
-        android:layout_width="55dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
-    <androidx.constraintlayout.ConstraintLayout
-        style="@style/buttonStyle"
-        android:id="@+id/detalle_prodycto"
-        android:layout_width="384dp"
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imag_atras_product">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/zapt" />
 
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/zapt" />
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZAPATO DE GALA"
+        android:textSize="24sp" />
 
-        <LinearLayout
-            style="@style/buttonStyleCerrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8">
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZAPATO NEGRO" />
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="ZAPATO DE GALA"
-                android:textSize="24sp" />
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige tu Talla" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="ZAPATO NEGRO" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="Elige tu Talla"/>
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Envio: /S XX.XX" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="Envio: /S XX.XX"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="Recibelo el dia XX"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="en Lima" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="Recogelo gratis en tienda"/>
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recibelo el dia XX" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="en Lima" />
 
-    </androidx.constraintlayout.ConstraintLayout>
-
-    <androidx.constraintlayout.ConstraintLayout
-        android:layout_width="414dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detalle_prodycto">
-
-        <LinearLayout
-            style="@style/buttonStyleGeneral"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="112dp"
-            tools:layout_editor_absoluteY="55dp">
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:text="Detalles del producto"
-                android:textSize="24sp"
-                android:layout_marginLeft="16dp"/>
-
-            <Button
-                android:id="@+id/button_comprar"
-                style="@style/buttonStyleCerrar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text=">> Comprar Ahora >>" />
-
-        </LinearLayout>
-    </androidx.constraintlayout.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recogelo gratis en tienda" />
 
 
-</androidx.constraintlayout.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles del producto"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button_comprar"
+        style="@style/buttonStyleCerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">> Comprar Ahora >>" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

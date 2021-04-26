@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdressActivity">
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="55dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
@@ -20,17 +19,14 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="28dp"
         android:text="Agregar direccion"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Telefono Celular"
         android:inputType="phone"
@@ -41,9 +37,8 @@
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="160dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Tipo de Direccion"
@@ -56,9 +51,8 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="220dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Direccion"
         android:inputType="textPersonName"
@@ -69,9 +63,8 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nro/Lote"
         android:inputType="textPersonName"
@@ -81,9 +74,8 @@
 
     <EditText
         android:id="@+id/editTextDate"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="340dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Urbanizacion"
         android:inputType="date"
@@ -93,9 +85,8 @@
 
     <EditText
         android:id="@+id/editTextDate2"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Provincia"
         android:inputType="date"
@@ -105,9 +96,8 @@
 
     <EditText
         android:id="@+id/editTextDate3"
-        android:layout_width="364dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="460dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Distrito"
         android:inputType="date"
@@ -118,9 +108,8 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="200dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Ubicar Direccion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,12 +117,11 @@
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="200dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
-</androidx.constraintlayout.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
