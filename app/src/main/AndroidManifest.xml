@@ -4,12 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
-
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true"></uses-feature>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,12 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fabrikal">
+        <activity android:name=".CamaraActivity"></activity>
+        <activity android:name=".model.CamaraActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".FinCompraActivity"></activity>
+        <activity android:name=".FinCompraActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ProductActivity" />
         <activity android:name=".LoginActivity" />

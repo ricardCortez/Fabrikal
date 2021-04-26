@@ -25,5 +25,9 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this, AdressActivity::class.java)
             startActivity(intent)
         }
+        buttonC.setOnClickListener {
+            val intent = Intent(this, CamaraActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
