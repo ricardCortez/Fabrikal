@@ -2,6 +2,7 @@ package com.example.fabrikal
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_camara.*
 import permissions.dispatcher.*
+
 
 @RuntimePermissions
 class CamaraActivity : AppCompatActivity() {
@@ -80,5 +82,9 @@ class CamaraActivity : AppCompatActivity() {
         data: Intent?
     ) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            vistaCamara.setImageBitmap(imageBitmap)
+        }
     }
 }
