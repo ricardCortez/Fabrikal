@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-feature android:name="android.hardware.camera"
-        android:required="true"></uses-feature>
+        android:required="true" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fabrikal">
-        <activity android:name=".CamaraActivity"></activity>
-        <activity android:name=".model.CamaraActivity"></activity>
+        <activity android:name=".CamaraActivity" />
+        <activity android:name=".model.CamaraActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
