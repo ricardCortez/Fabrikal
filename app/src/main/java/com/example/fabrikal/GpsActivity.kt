@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import permissions.dispatcher.RuntimePermissions
 
 
 class GpsActivity : AppCompatActivity(), OnMapReadyCallback {
