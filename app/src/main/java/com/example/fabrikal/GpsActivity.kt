@@ -13,7 +13,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import permissions.dispatcher.RuntimePermissions
 
 
-@RuntimePermissions
 class GpsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
