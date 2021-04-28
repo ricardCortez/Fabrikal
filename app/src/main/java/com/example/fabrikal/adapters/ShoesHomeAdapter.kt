@@ -18,6 +18,7 @@ class ShoesHomeAdapter(val lista : List<ShoeHomeItem> ) : RecyclerView.Adapter<S
         init {
             itemView.setOnClickListener {
 
+                var absoluteAdapterPosition = 0
                 onItemClick?.invoke(lista[absoluteAdapterPosition])
             }
         }

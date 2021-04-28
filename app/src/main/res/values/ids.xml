@@ -17,4 +17,10 @@
     <item name="icon_add" type="id" />
     <item name="icon_save" type="id" />
     <item name="icon_delete" type="id" />
+    <item name="tv_tipo" type="id" />
+    <item name="tv_color" type="id" />
+    <item name="tv_marca" type="id" />
+    <item name="tv_modelo" type="id" />
+    <item name="tv_precio" type="id" />
+    <item name="rv" type="id" />
 </resources>
