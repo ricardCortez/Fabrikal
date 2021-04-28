@@ -41,9 +41,9 @@ public class ActivityProducto extends AppCompatActivity {
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (DataSnapshot.exists()) {
-                    for (DataSnapshot snapshot1 : DataSnapshot.getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         producto p = snapshot.getValue(producto.class);
                         list.add(p);
                     }
