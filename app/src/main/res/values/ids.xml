@@ -23,4 +23,8 @@
     <item name="tv_modelo" type="id" />
     <item name="tv_precio" type="id" />
     <item name="rv" type="id" />
+    <item name="btn_signUp" type="id" />
+    <item name="btn_signIn" type="id" />
+    <item name="email" type="id" />
+    <item name="password" type="id" />
 </resources>
