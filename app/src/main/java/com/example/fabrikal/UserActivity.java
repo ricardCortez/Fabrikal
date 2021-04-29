@@ -20,7 +20,7 @@ public class UserActivity extends AppCompatActivity {
 
     EditText dniU, nombreU,apellidoU,tipo_direccionU,direccionU,nro_loteU,
             provinciaU,distritoU,celularU,emailU,contraseñaU,nro_tarjetaU,vigencia_tarjetaU,camaraU;
-    ListView listV_usuarios;
+        ListView listV_usuarios;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;

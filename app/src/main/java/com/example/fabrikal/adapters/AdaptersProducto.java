@@ -17,7 +17,7 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
 
     List<producto> ProductoList;
 
-    public AdaptersProducto(List<producto> productoList) {
+    public AdaptersProducto(List<producto> productoList, ProductoListener productoSeleccionadListener) {
         this.ProductoList = productoList;
     }
 
@@ -60,4 +60,7 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
         }
     }
 
+    public abstract static class ProductoListener {
+        public abstract void onItemClick(producto item);
+    }
 }
