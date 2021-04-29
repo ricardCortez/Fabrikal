@@ -15,10 +15,10 @@ import java.util.List;
 
 public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.viewholderproductos>{
 
-    List<producto> productoList;
+    List<producto> ProductoList;
 
     public AdaptersProducto(List<producto> productoList) {
-        this.productoList = productoList;
+        this.ProductoList = productoList;
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
 
     @Override
     public void onBindViewHolder(@NonNull viewholderproductos holder, int position) {
-     producto p =  productoList.get(position);
+     producto p =  ProductoList.get(position);
 
      holder.tv_tipo.setText(p.getTipo());
      holder.tv_color.setText(p.getColor());
@@ -43,7 +43,7 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
 
     @Override
     public int getItemCount() {
-        return productoList.size();
+        return ProductoList.size();
     }
 
     public class viewholderproductos extends RecyclerView.ViewHolder {

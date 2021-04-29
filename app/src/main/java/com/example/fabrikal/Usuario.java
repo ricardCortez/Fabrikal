@@ -17,6 +17,7 @@ public class Usuario {
     private String nro_tarjeta;
     private  String vigencia_tarjeta;
 
+
     public String getuid() {
         return uid;
     }
