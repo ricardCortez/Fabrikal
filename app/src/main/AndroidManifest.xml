@@ -25,7 +25,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="my_channel_id_01" />
 
-
+        <activity android:name=".ActivityProducto" />
         <activity android:name=".FinCompraActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ProductActivity" />
