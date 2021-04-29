@@ -16,6 +16,7 @@ public class Usuario {
     private String contraseña;
     private String nro_tarjeta;
     private  String vigencia_tarjeta;
+    private String camara;
 
 
     public String getuid() {
@@ -131,6 +132,14 @@ public class Usuario {
 
     public void setVigencia_tarjeta(String vigencia_tarjeta) {
         vigencia_tarjeta = vigencia_tarjeta;
+    }
+
+    public String getCamara() {
+        return camara;
+    }
+
+    public void setCamara(String camara) {
+        camara = camara;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.fabrikal;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -20,7 +19,7 @@ import java.util.UUID;
 public class UserActivity extends AppCompatActivity {
 
     EditText dniU, nombreU,apellidoU,tipo_direccionU,direccionU,nro_loteU,
-            provinciaU,distritoU,celularU,emailU,contraseñaU,nro_tarjetaU,vigencia_tarjetaU;
+            provinciaU,distritoU,celularU,emailU,contraseñaU,nro_tarjetaU,vigencia_tarjetaU,camaraU;
     ListView listV_usuarios;
 
     FirebaseDatabase firebaseDatabase;
@@ -29,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
 
         dniU = findViewById(R.id.txt_dniUsuario);
         nombreU = findViewById(R.id.txt_nombreUsuario);
@@ -44,6 +43,7 @@ public class UserActivity extends AppCompatActivity {
         contraseñaU = findViewById(R.id.txt_contraseñaUsuario);
         nro_tarjetaU = findViewById(R.id.txt_nro_tarjetaUsuario);
         vigencia_tarjetaU = findViewById(R.id.txt_vigencia_tarjetaUsuario);
+        camaraU =  findViewById(R.id.camara);
 
         listV_usuarios = findViewById(R.id.lv_datosUsuarios);
         inicializarFirebase();
@@ -73,11 +73,12 @@ public class UserActivity extends AppCompatActivity {
         String  contraseña = contraseñaU.getText().toString();
         String  nro_tarjeta = nro_tarjetaU.getText().toString();
         String  vigencia_tarjeta = vigencia_tarjetaU.getText().toString();
+        String  camara = camaraU.getText().toString();
 
         switch (item.getItemId()){
             case R.id.icon_add:{
                 Toast.makeText(this,"Agregar", Toast.LENGTH_LONG).show();
-                if (dni.equals("")||nombre.equals("")||apellido.equals("")||tipo_direccion.equals("")||direccion.equals("")||nro_lote.equals("")||provincia.equals("")||distrito.equals("")||celular.equals("")||email.equals("")||contraseña.equals("")||nro_tarjeta.equals("")||vigencia_tarjeta.equals("")){
+                if (dni.equals("")||nombre.equals("")||apellido.equals("")||tipo_direccion.equals("")||direccion.equals("")||nro_lote.equals("")||provincia.equals("")||distrito.equals("")||celular.equals("")||email.equals("")||contraseña.equals("")||nro_tarjeta.equals("")||vigencia_tarjeta.equals("")||camara.equals("")){
                     validacion();
                 }
                 else {
@@ -96,6 +97,7 @@ public class UserActivity extends AppCompatActivity {
                     u.setContraseña(contraseña);
                     u.setNro_tarjeta(nro_tarjeta);
                     u.setVigencia_tarjeta(vigencia_tarjeta);
+                    u.setCamara(camara);
                     databaseReference.child("Usuario").child(u.getuid()).setValue(u);
                     Toast.makeText(this, "Agregado", Toast.LENGTH_LONG).show();
 
@@ -130,6 +132,7 @@ public class UserActivity extends AppCompatActivity {
         String contraseña = contraseñaU.getText().toString();
         String nro_tarjeta = nro_tarjetaU.getText().toString();
         String vigencia_tarjeta = vigencia_tarjetaU.getText().toString();
+        String camara = camaraU.getText().toString();
 
         if (dni.equals("")){
             dniU.setError("Required");
@@ -178,6 +181,9 @@ public class UserActivity extends AppCompatActivity {
             vigencia_tarjetaU.setError("Required");
         }
 
+        else if (camara.equals("")){
+            camaraU.setError("Required");
+        }
 
     }
 }

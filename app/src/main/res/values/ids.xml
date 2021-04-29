@@ -27,4 +27,5 @@
     <item name="btn_signIn" type="id" />
     <item name="email" type="id" />
     <item name="password" type="id" />
+    <item name="camara" type="id" />
 </resources>
