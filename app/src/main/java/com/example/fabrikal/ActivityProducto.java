@@ -25,18 +25,27 @@ public class ActivityProducto extends AppCompatActivity {
     AdaptersProducto adapter;
     LinearLayoutManager lm;
 
+
+    private AdaptersProducto.ProductoListener productoSeleccionadListener = new AdaptersProducto.ProductoListener() {
+        @Override
+        public void onItemClick(producto item) {
+            //TODO:  Agregar en la lista de productos del usuario
+            finish();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.activity_search);
 
         ref = FirebaseDatabase.getInstance().getReference().child("producto");
-        rv = findViewById(R.id.rv);
+        rv = findViewById(R.id.searchRecyclerView);
         searchView = findViewById(R.id.searchView);
         lm = new LinearLayoutManager(this);
         rv.setLayoutManager(lm);
         list = new ArrayList<>();
-        adapter = new AdaptersProducto(list);
+        adapter = new AdaptersProducto(list,productoSeleccionadListener);
         rv.setAdapter(adapter);
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -78,7 +87,7 @@ public class ActivityProducto extends AppCompatActivity {
                 milista.add(obj);
             }
         }
-        AdaptersProducto adapter = new AdaptersProducto(milista);
+        AdaptersProducto adapter = new AdaptersProducto(milista,productoSeleccionadListener);
         rv.setAdapter(adapter);
     }
 }
