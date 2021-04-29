@@ -17,8 +17,11 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
 
     List<producto> ProductoList;
 
-    public AdaptersProducto(List<producto> productoList) {
+    private ProductoListener productoListener;
+
+    public AdaptersProducto(List<producto> productoList, ProductoListener listener) {
         this.ProductoList = productoList;
+        this.productoListener = productoListener;
     }
 
     @NonNull
@@ -52,12 +55,24 @@ public class AdaptersProducto extends RecyclerView.Adapter<AdaptersProducto.view
         public viewholderproductos(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    productoListener.onItemClick(ProductoList.get(getAbsoluteAdapterPosition()));
+                }
+            });
+
             tv_tipo = itemView.findViewById(R.id.tv_tipo);
             tv_color = itemView.findViewById(R.id.tv_color);
             tv_marca = itemView.findViewById(R.id.tv_marca);
             tv_modelo = itemView.findViewById(R.id.tv_modelo);
             tv_precio = itemView.findViewById(R.id.tv_precio);
         }
+    }
+
+    public interface ProductoListener {
+
+        void onItemClick (producto item);
     }
 
 }

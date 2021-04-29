@@ -58,6 +58,11 @@ class HomeFragment : Fragment() {
         }
         shoesRecyclerView.adapter = shoesHomeAdapter
 
+        searchButton.setOnClickListener {
+            val intent = Intent(activity,ActivityProducto::class.java)
+            startActivity(intent)
+        }
+
     }
 
     companion object {
