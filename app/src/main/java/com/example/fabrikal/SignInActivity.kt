@@ -16,9 +16,14 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
         buttonCrear.setOnClickListener{
-            val intent = Intent(this,HomeActivity::class.java)
-            startActivity(intent)
+            if (checkBox.isChecked){
+                val intent = Intent(this,HomeActivity::class.java)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+            }
         }
         imageBack1.setOnClickListener{
             finish()
