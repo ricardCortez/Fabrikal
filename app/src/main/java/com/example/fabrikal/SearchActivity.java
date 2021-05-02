@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fabrikal.adapters.AdaptersProducto;
+import com.example.fabrikal.adapters.ShoesHomeAdapter;
+import com.example.fabrikal.model.ShoeHomeItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,48 +18,44 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ActivityProducto extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     DatabaseReference ref;
-    ArrayList<producto> list;
+    ArrayList<ShoeHomeItem> list;
     RecyclerView rv;
     SearchView searchView;
-    AdaptersProducto adapter;
+    ShoesHomeAdapter adapter;
     LinearLayoutManager lm;
 
-
-    private AdaptersProducto.ProductoListener productoSeleccionadListener = new AdaptersProducto.ProductoListener() {
-        @Override
-        public void onItemClick(producto item) {
-            //TODO:  Agregar en la lista de productos del usuario
-            finish();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("producto");
+        ref = FirebaseDatabase.getInstance().getReference("Producto");
         rv = findViewById(R.id.searchRecyclerView);
         searchView = findViewById(R.id.searchView);
         lm = new LinearLayoutManager(this);
         rv.setLayoutManager(lm);
         list = new ArrayList<>();
-        adapter = new AdaptersProducto(list,productoSeleccionadListener);
+        adapter = new ShoesHomeAdapter(new ArrayList<>());
         rv.setAdapter(adapter);
+
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        producto p = snapshot.getValue(producto.class);
+                        ShoeHomeItem p = snapshot.getValue(ShoeHomeItem.class);
                         list.add(p);
                     }
-                    adapter.notify();
                 }
+
+               adapter.updateList(list);
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -81,13 +78,14 @@ public class ActivityProducto extends AppCompatActivity {
     }
 
     private void buscar(String s) {
-        ArrayList<producto>milista = new ArrayList<>();
-        for (producto obj: list){
+        ArrayList<ShoeHomeItem> milista = new ArrayList<>();
+        for (ShoeHomeItem obj: list){
             if(obj.getModelo().toLowerCase().contains(s.toLowerCase())){
                 milista.add(obj);
             }
         }
-        AdaptersProducto adapter = new AdaptersProducto(milista,productoSeleccionadListener);
-        rv.setAdapter(adapter);
+
+        adapter.updateList(milista);
+
     }
 }

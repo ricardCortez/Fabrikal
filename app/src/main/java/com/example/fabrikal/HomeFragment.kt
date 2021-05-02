@@ -1,6 +1,7 @@
 package com.example.fabrikal
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fabrikal.adapters.ShoesHomeAdapter
 import com.example.fabrikal.model.ShoeHomeItem
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -20,9 +22,13 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     lateinit var shoesHomeAdapter : ShoesHomeAdapter
+    private lateinit var dbReference: DatabaseReference
+    val shoeList : ArrayList<ShoeHomeItem> = arrayListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dbReference = FirebaseDatabase.getInstance().getReference("Producto")
 
     }
 
@@ -36,30 +42,41 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         shoesRecyclerView.layoutManager = GridLayoutManager(context,2)
 
-        var shoeList : MutableList<ShoeHomeItem> = mutableListOf()
-        shoeList.add(ShoeHomeItem("ABCD","ESTO ES UN ZAPATO","10.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD2","ESTO ES UN ZAPATO","20.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD3","ESTO ES UN ZAPATO","30.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD4","ESTO ES UN ZAPATO","50.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD5","ESTO ES UN ZAPATO","60.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD6","ESTO ES UN ZAPATO","70.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD","ESTO ES UN ZAPATO","10.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD2","ESTO ES UN ZAPATO","20.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD3","ESTO ES UN ZAPATO","30.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD4","ESTO ES UN ZAPATO","50.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD5","ESTO ES UN ZAPATO","60.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
-        shoeList.add(ShoeHomeItem("ABCD6","ESTO ES UN ZAPATO","70.00","https://i02.appmifile.com/363_operator_in/13/10/2020/c7bde508f128d7b1fd10a224d18a5333.png"))
+
+
 
         shoesHomeAdapter = ShoesHomeAdapter(shoeList)
         shoesHomeAdapter.onItemClick = { shoeHomeItem ->
             val intent = Intent(activity,ProductActivity::class.java)
+            intent.putExtra("PRODUCTO",shoeHomeItem)
             startActivity(intent)
 
         }
         shoesRecyclerView.adapter = shoesHomeAdapter
 
+
+        dbReference.addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                //TODO: Mostrar Error
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    snapshot.children.forEach { childSnapshot ->
+                        childSnapshot.getValue(ShoeHomeItem::class.java)?.apply {
+                            shoeList.add(this)
+                        }
+
+                    }
+
+                    shoesHomeAdapter.notifyDataSetChanged()
+                }
+            }
+
+        })
+
         searchButton.setOnClickListener {
-            val intent = Intent(activity,ActivityProducto::class.java)
+            val intent = Intent(activity, SearchActivity::class.java)
             startActivity(intent)
         }
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
@@ -18,8 +19,11 @@ private const val ARG_PARAM2 = "param2"
 
 class ProfileFragment : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
 
     }
 
@@ -49,8 +53,10 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
         button_cerrar_sesion.setOnClickListener {
+            auth.signOut()
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
         }
     }
 

@@ -1,16 +1,16 @@
 package com.example.fabrikal;
 
-public class producto {
+public class Producto {
     private String tipo;
     private String color;
     private String marca;
     private String modelo;
-    private String precio;
+    private Double precio;
 
-    public producto() {
+    public Producto() {
     }
 
-    public producto(String tipo, String color, String marca, String modelo, String precio) {
+    public Producto(String tipo, String color, String marca, String modelo, Double precio) {
         this.tipo = tipo;
         this.color = color;
         this.marca = marca;
@@ -50,11 +50,11 @@ public class producto {
         this.modelo = modelo;
     }
 
-    public String getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 }

@@ -8,21 +8,31 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fabrikal.model.UserProfile
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserInfo
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import permissions.dispatcher.*
 
 @RuntimePermissions
 class SignInActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var dbReference: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-
+        auth = FirebaseAuth.getInstance()
+        dbReference = FirebaseDatabase.getInstance().getReference("Users")
         buttonCrear.setOnClickListener{
             if (checkBox.isChecked){
-                val intent = Intent(this,HomeActivity::class.java)
-                startActivity(intent)
+                createUser()
             }else{
-                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Acepta los terminos del servicio", Toast.LENGTH_SHORT).show()
             }
         }
         imageBack1.setOnClickListener{
@@ -51,6 +61,40 @@ class SignInActivity : AppCompatActivity() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
+    fun createUser(){
+        //TODO: Validar input
+        val userEmail = inputCreateEmailAdress.text.toString()
+        val userPassword = inputCreatePassword.text.toString()
+        val userInfo = UserProfile("",
+            inputCreateName.text.toString(),
+            inputCreateLastName.text.toString(),
+            userEmail,
+            inputCreateDNI.text.toString())
+
+
+        auth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, OnCompleteListener{ task ->
+            if(task.isSuccessful){
+                task.result?.let { authResult ->
+                    val userID = authResult.user.uid ?: ""
+                    dbReference.child(userID).setValue(userInfo).addOnCompleteListener {
+                        goHome()
+                    }
+                }
+
+            }else {
+                Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show()
+            }
+
+        })
+
+
+    }
+
+    fun goHome(){
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
     @NeedsPermission(Manifest.permission.CAMERA)
     fun abrirCamara() {

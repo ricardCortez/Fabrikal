@@ -9,25 +9,29 @@ import com.example.fabrikal.model.ShoeHomeItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_shoe_grid_item.view.*
 
-class ShoesHomeAdapter(val lista : List<ShoeHomeItem> ) : RecyclerView.Adapter<ShoesHomeAdapter.ViewHolder>() {
+class ShoesHomeAdapter(var lista : ArrayList<ShoeHomeItem> ) : RecyclerView.Adapter<ShoesHomeAdapter.ViewHolder>() {
     var onItemClick: ((ShoeHomeItem) -> Unit)? = null
 
+    fun updateList(nuevaLista : ArrayList<ShoeHomeItem>){
+        lista.clear()
+        lista.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-
         init {
             itemView.setOnClickListener {
-
-                var absoluteAdapterPosition = 0
                 onItemClick?.invoke(lista[absoluteAdapterPosition])
             }
         }
 
         fun bind(item: ShoeHomeItem){
-            Picasso.get().load(item.urlImagen).into(itemView.photoImageView)
-            itemView.titleTextView.text = item.brand
-            itemView.descripcionTextView.text = item.descripcion
-            itemView.precioTextView.text = item.precio
+            Picasso.get().load(item.imagen).into(itemView.photoImageView)
+            itemView.marcaTextView.text = item.marca
+            itemView.modeloTextView.text = item.modelo
+            itemView.tipoTextView.text = item.tipo
+            itemView.colorTextView.text = item.color
+            itemView.precioTextView.text = item.precio.toString()
 
         }
 

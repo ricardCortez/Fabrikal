@@ -45,17 +45,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="326dp"
-        android:layout_height="208dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8">
+        app:layout_constraintTop_toBottomOf="@+id/imagenImageView">
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/modeloTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ZAPATO DE GALA"
@@ -69,38 +70,27 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/colorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ZAPATO NEGRO" />
-
         <TextView
-            android:id="@+id/textView38"
+            android:id="@+id/marcaTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Elige tu Talla" />
+            android:text="Adidas" />
 
         <TextView
-            android:id="@+id/textView39"
+            android:id="@+id/precioTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Envio: /S XX.XX" />
+            android:text="Precio: S/ XX.XX" />
 
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recibelo el dia XX" />
 
-        <TextView
-            android:id="@+id/textView42"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recogelo gratis en tienda" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imagenImageView"
         android:layout_width="322dp"
         android:layout_height="243dp"
         android:layout_marginTop="80dp"
