@@ -16,7 +16,8 @@ class AdressActivity : AppCompatActivity() {
     companion object{
         const val REQUEST_CODE = 1003
     }
-
+    private var latitude : Double = 0.0
+    private var longitude : Double = 0.0
     private var editarAddress : UserAddress? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class AdressActivity : AppCompatActivity() {
 
         buttonUbicarDireccion.setOnClickListener{
             val intent = Intent(this,GpsActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,GpsActivity.REQUEST_CODE)
         }
 
         guardarButton.setOnClickListener {
@@ -63,8 +64,8 @@ class AdressActivity : AppCompatActivity() {
         val provincia = inputCreateProvincia.text.toString()
         val urbanizacion = inputCreateUrbanizacion.text.toString()
         val distrito = inputCreateDistrito.text.toString()
-        val latitud = ""
-        val longitud = ""
+        val latitud = "${latitude}"
+        val longitud = "${longitude}"
 
         val direccionUsuario = UserAddress(telefono,
                 direccion,
@@ -77,7 +78,6 @@ class AdressActivity : AppCompatActivity() {
                 longitud
         )
 
-
         val direccionBundle = Bundle().apply {
             putParcelable("DIRECCION",direccionUsuario)
         }
@@ -85,6 +85,15 @@ class AdressActivity : AppCompatActivity() {
         setResult(Activity.RESULT_OK,intent)
         Toast.makeText(this,"DIRECCION ACTUALIZADA", Toast.LENGTH_LONG).show()
         finish()
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == GpsActivity.REQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                latitude = data?.getDoubleExtra("LATITUD",0.0) ?: 0.0
+                longitude = data?.getDoubleExtra("LONGITUD",0.0) ?: 0.0
+            }
+        }
     }
 }

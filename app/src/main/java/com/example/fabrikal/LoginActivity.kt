@@ -40,8 +40,6 @@ class LoginActivity : AppCompatActivity() {
                     .setMaxProgress(100)
                     .setAnimationSpeed(2)
                     .show()
-                hud.setAutoDismiss(true)
-
 
                 auth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnCompleteListener(
                     this,
@@ -54,10 +52,11 @@ class LoginActivity : AppCompatActivity() {
                                     .addValueEventListener(object :
                                         ValueEventListener {
                                         override fun onCancelled(error: DatabaseError) {
-
+                                            hud.dismiss()
                                         }
 
                                         override fun onDataChange(snapshot: DataSnapshot) {
+                                            hud.dismiss()
                                             val userInfo =
                                                 snapshot.getValue(UserProfile::class.java) ?: return
                                             goHome(userInfo)
@@ -70,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
 
                         } else {
+                            hud.dismiss()
                             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT)
                                 .show()
                         }

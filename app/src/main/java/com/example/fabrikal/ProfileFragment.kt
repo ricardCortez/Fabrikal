@@ -1,8 +1,11 @@
 package com.example.fabrikal
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +29,6 @@ class ProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         userData = arguments?.getParcelable<UserProfile>(USER_PARAM) ?: return
-
-
     }
 
     override fun onCreateView(
@@ -36,37 +37,48 @@ class ProfileFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
+    private fun convertBase64ToBitmap(base64: String) : Bitmap{
+        val decodedString: ByteArray = Base64.decode(base64, Base64.DEFAULT)
+        val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        return decodedByte
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         nombreUsuarioTextView.text = "${userData.nombres} ${userData.apellidos}"
         emailTextView.text = userData.email
-
+        userData.foto?.let {
+            imagePerfil.setImageBitmap(convertBase64ToBitmap(it))
+        }
 
         button_direccion.setOnClickListener {
-            val intent = Intent(activity,AdressActivity::class.java)
-            val userAddress = UserAddress(userData.telefono,
-            userData.direccion,
-            userData.tipoDireccion,
-            userData.lote,
-            userData.provincia,
-            userData.urbanizacion,
-            userData.distrito,
-            userData.latitud,
-            userData.longitud)
+            val intent = Intent(activity, AdressActivity::class.java)
+            val userAddress = UserAddress(
+                userData.telefono,
+                userData.direccion,
+                userData.tipoDireccion,
+                userData.lote,
+                userData.provincia,
+                userData.urbanizacion,
+                userData.distrito,
+                userData.latitud,
+                userData.longitud
+            )
             intent.putExtra("DIRECCION", userAddress)
-            startActivityForResult(intent,AdressActivity.REQUEST_CODE)
+            startActivityForResult(intent, AdressActivity.REQUEST_CODE)
         }
 
         button_tarjeta.setOnClickListener {
-            val intent = Intent(activity,CreditCardActivity::class.java)
-            val creditCard = CreditCard(userData.nombreTitularTarjeta,
-                    userData.vigenciaMes,
-                    userData.vigenciaAnio,
-                    userData.nroTarjeta)
-            intent.putExtra(CreditCardActivity.PARAM_CARD,creditCard)
-            startActivityForResult(intent,CreditCardActivity.REQUEST_CODE)
+            val intent = Intent(activity, CreditCardActivity::class.java)
+            val creditCard = CreditCard(
+                userData.nombreTitularTarjeta,
+                userData.vigenciaMes,
+                userData.vigenciaAnio,
+                userData.nroTarjeta
+            )
+            intent.putExtra(CreditCardActivity.PARAM_CARD, creditCard)
+            startActivityForResult(intent, CreditCardActivity.REQUEST_CODE)
         }
 
         button_llamanos.setOnClickListener {
@@ -76,7 +88,7 @@ class ProfileFragment : Fragment() {
         }
         button_cerrar_sesion.setOnClickListener {
             auth.signOut()
-            val intent = Intent(activity,MainActivity::class.java)
+            val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
             activity?.finish()
         }
@@ -85,7 +97,7 @@ class ProfileFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(userProfile : UserProfile?) =
+        fun newInstance(userProfile: UserProfile?) =
             ProfileFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(USER_PARAM, userProfile)
