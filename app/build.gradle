@@ -67,9 +67,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.firebase:firebase-auth'
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
-    // To use constraintlayout in compose
-    //implementation 'androidx.constraintlayout.Group;'
-
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    implementation 'com.google.firebase:firebase-storage-ktx'
 }
+
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.application'

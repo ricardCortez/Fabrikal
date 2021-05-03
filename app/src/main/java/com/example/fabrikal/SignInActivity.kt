@@ -4,8 +4,11 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +22,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import permissions.dispatcher.*
+import java.io.ByteArrayOutputStream
+import java.util.*
+import kotlin.random.Random
 
 @RuntimePermissions
 class SignInActivity : AppCompatActivity() {
@@ -55,7 +61,12 @@ class SignInActivity : AppCompatActivity() {
             abrirCamaraWithPermissionCheck()
         }
     }
-
+    private fun convertBitmapToBase64(bitmap: Bitmap) : String{
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG,50,stream)
+        val imge = stream.toByteArray()
+        return Base64.encodeToString(imge,Base64.DEFAULT)
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -66,6 +77,7 @@ class SignInActivity : AppCompatActivity() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
+    private var fotoString : String? = null
     fun createUser(){
         //TODO: Validar input
         val userEmail = inputCreateEmailAdress.text.toString()
@@ -79,9 +91,8 @@ class SignInActivity : AppCompatActivity() {
             return
         }
 
-
         val userInfo = UserProfile("",
-                "",//sin foto
+                fotoString,//sin foto
             inputCreateName.text.toString(),
             inputCreateLastName.text.toString(),
             userEmail,
@@ -100,7 +111,6 @@ class SignInActivity : AppCompatActivity() {
                 creditCard?.vigenciaAnio,
                 creditCard?.nombreTitular
         )
-
 
         auth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, OnCompleteListener{ task ->
             if(task.isSuccessful){
@@ -174,6 +184,7 @@ class SignInActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CamaraActivity.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
+            fotoString = convertBitmapToBase64(imageBitmap)
             imageCarmaraNew.setImageBitmap(imageBitmap)
         }else if(requestCode == CreditCardActivity.REQUEST_CODE && resultCode == Activity.RESULT_OK){
             creditCard = data?.extras?.getParcelable<CreditCard>("CREDITCARD")

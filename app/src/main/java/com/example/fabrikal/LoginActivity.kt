@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fabrikal.model.UserProfile
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserInfo
 import com.google.firebase.database.*
+import com.kaopiz.kprogresshud.KProgressHUD
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -34,39 +34,52 @@ class LoginActivity : AppCompatActivity() {
             if (emailLogin.isEmpty()||passwordLogin.isEmpty()){
                 showAlertnull()
             }else{
+                 val hud = KProgressHUD.create(this)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel("Please wait")
+                    .setMaxProgress(100)
+                    .setAnimationSpeed(2)
+                    .show()
+                hud.setAutoDismiss(true)
 
-                auth.signInWithEmailAndPassword(emailLogin,passwordLogin).addOnCompleteListener(this, OnCompleteListener {
-                    task ->
-                    if(task.isSuccessful) {
 
-                        task.result?.let { authResult ->
+                auth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnCompleteListener(
+                    this,
+                    OnCompleteListener { task ->
+                        if (task.isSuccessful) {
 
-                            dbReference.child(authResult.user.uid).addValueEventListener(object : ValueEventListener{
-                                override fun onCancelled(error: DatabaseError) {
+                            task.result?.let { authResult ->
 
-                                }
+                                dbReference.child(authResult.user.uid)
+                                    .addValueEventListener(object :
+                                        ValueEventListener {
+                                        override fun onCancelled(error: DatabaseError) {
 
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    val userInfo = snapshot.getValue(UserProfile::class.java) ?: return
-                                    goHome(userInfo)
+                                        }
 
-                                }
+                                        override fun onDataChange(snapshot: DataSnapshot) {
+                                            val userInfo =
+                                                snapshot.getValue(UserProfile::class.java) ?: return
+                                            goHome(userInfo)
 
-                            })
+                                        }
 
+                                    })
+
+                            }
+
+
+                        } else {
+                            Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT)
+                                .show()
                         }
-
-
-                    }else{
-                        Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-                    }
-                })
+                    })
 
             }
         }
 
         buttonCrearCuenta.setOnClickListener{
-            val intent = Intent(this,SignInActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
         imageBack.setOnClickListener{
@@ -76,8 +89,8 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun goHome(userInfo: UserProfile){
-        val intent = Intent(this,HomeActivity::class.java)
-        intent.putExtra("USER_PROFILE",userInfo)
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("USER_PROFILE", userInfo)
         startActivity(intent)
         finish()
     }
@@ -87,9 +100,9 @@ class LoginActivity : AppCompatActivity() {
             .setTitle("Error")
             .setMessage("Ingrese usuario y/o password")
             .setPositiveButton(
-            "Aceptar",
-            null
-        ).create()
+                "Aceptar",
+                null
+            ).create()
 
         alertDialog.show()
     }
@@ -99,9 +112,9 @@ class LoginActivity : AppCompatActivity() {
             .setTitle("Error")
             .setMessage("El usuario ya se encuentra resgistrado")
             .setPositiveButton(
-            "Aceptar",
-            null
-        ).create()
+                "Aceptar",
+                null
+            ).create()
 
         alertDialog.show()
     }
@@ -111,9 +124,9 @@ class LoginActivity : AppCompatActivity() {
             .setTitle("Error")
             .setMessage("El usuario no se encuentra resgistrado")
             .setPositiveButton(
-            "Aceptar",
-            null
-        ).create()
+                "Aceptar",
+                null
+            ).create()
         alertDialog.show()
     }
 
