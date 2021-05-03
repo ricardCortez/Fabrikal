@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
 
     var ordenCompra : OrdenCompra? = null
     var productoOrdenCompra : ShoeHomeItem? = null
+    var userData : UserProfile? = null
     private lateinit var  sharedPreferences : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +71,15 @@ class HomeActivity : AppCompatActivity() {
         }
 
         intent.getParcelableExtra<UserProfile>("USER_PROFILE")?.let { userProfile ->
+            userData = userProfile
             sharedPreferences.edit().putString("USER_COMPRA",Gson().toJson(userProfile)).apply()
+        }?: kotlin.run {
+            sharedPreferences.getString("USER_COMPRA", "")?.let { perfilString ->
+                if(perfilString.isNotEmpty()){
+                    userData = Gson().fromJson(perfilString,UserProfile::class.java)
+                }
+
+            }
         }
     }
 
@@ -81,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun showProfile(){
-        val fragment = ProfileFragment.newInstance()
+        val fragment = ProfileFragment.newInstance(userData)
         supportFragmentManager.beginTransaction().replace(R.id.contentLayout,fragment,"profile").commit()
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 //import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fabrikal.model.UserAddress
@@ -16,9 +17,29 @@ class AdressActivity : AppCompatActivity() {
         const val REQUEST_CODE = 1003
     }
 
+    private var editarAddress : UserAddress? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adress)
+
+        intent.extras?.getParcelable<UserAddress>("DIRECCION")?.let{ address ->
+            editarAddress = address
+            inputCreatePhoneNumber.setText(editarAddress?.telefono)
+            inputCreateTipoDireccion.setText(editarAddress?.tipoDireccion)
+            inputCreateDireccion.setText(editarAddress?.direccion)
+            inputCreateLote.setText(editarAddress?.nroLote)
+            inputCreateProvincia.setText(editarAddress?.provincia)
+            inputCreateUrbanizacion.setText(editarAddress?.urbanizacion)
+            inputCreateDistrito.setText(editarAddress?.distrito)
+
+        }
+
+        if(editarAddress != null){
+            guardarButton.visibility = View.GONE
+        }
+
+
         closeButton.setOnClickListener{
             finish()
         }
