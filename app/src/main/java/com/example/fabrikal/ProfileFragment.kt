@@ -3,27 +3,30 @@ package com.example.fabrikal
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-//import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.fabrikal.model.CreditCard
+import com.example.fabrikal.model.UserAddress
+import com.example.fabrikal.model.UserProfile
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val USER_PARAM = "USUARIO"
 
 class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var userData : UserProfile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        userData = arguments?.getParcelable<UserProfile>(USER_PARAM) ?: return
+
 
     }
 
@@ -37,14 +40,33 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        nombreUsuarioTextView.text = "${userData.nombres} ${userData.apellidos}"
+        emailTextView.text = userData.email
+
+
         button_direccion.setOnClickListener {
             val intent = Intent(activity,AdressActivity::class.java)
-            startActivity(intent)
+            val userAddress = UserAddress(userData.telefono,
+            userData.direccion,
+            userData.tipoDireccion,
+            userData.lote,
+            userData.provincia,
+            userData.urbanizacion,
+            userData.distrito,
+            userData.latitud,
+            userData.longitud)
+            intent.putExtra("DIRECCION", userAddress)
+            startActivityForResult(intent,AdressActivity.REQUEST_CODE)
         }
 
         button_tarjeta.setOnClickListener {
             val intent = Intent(activity,CreditCardActivity::class.java)
-            startActivity(intent)
+            val creditCard = CreditCard(userData.nombreTitularTarjeta,
+                    userData.vigenciaMes,
+                    userData.vigenciaAnio,
+                    userData.nroTarjeta)
+            intent.putExtra(CreditCardActivity.PARAM_CARD,creditCard)
+            startActivityForResult(intent,CreditCardActivity.REQUEST_CODE)
         }
 
         button_llamanos.setOnClickListener {
@@ -61,22 +83,13 @@ class ProfileFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
-        fun newInstance(/*param1: String, param2: String*/) =
+        fun newInstance(userProfile : UserProfile?) =
             ProfileFragment().apply {
-                /*arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }*/
+                arguments = Bundle().apply {
+                    putParcelable(USER_PARAM, userProfile)
+                }
             }
     }
 }
