@@ -1,6 +1,7 @@
 package com.example.fabrikal
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fabrikal.model.CreditCard
+import com.example.fabrikal.model.UserAddress
 import com.example.fabrikal.model.UserProfile
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +25,8 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var dbReference: DatabaseReference
+    private var creditCard : CreditCard? = null
+    private var address : UserAddress? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +45,11 @@ class SignInActivity : AppCompatActivity() {
         }
         buttonAddCreditCard.setOnClickListener {
             val intent = Intent( this, CreditCardActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,CreditCardActivity.REQUEST_CODE)
         }
         buttonAddAdrres.setOnClickListener {
             val intent = Intent(this, AdressActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,AdressActivity.REQUEST_CODE)
         }
         buttonC.setOnClickListener {
             abrirCamaraWithPermissionCheck()
@@ -65,17 +70,43 @@ class SignInActivity : AppCompatActivity() {
         //TODO: Validar input
         val userEmail = inputCreateEmailAdress.text.toString()
         val userPassword = inputCreatePassword.text.toString()
+
+        if(address == null){
+            Toast.makeText(this, "INGRESAR DIRECCION",Toast.LENGTH_LONG).show()
+            return
+        }else if (creditCard == null){
+            Toast.makeText(this,"INGRESAR TARJETA", Toast.LENGTH_LONG).show()
+            return
+        }
+
+
         val userInfo = UserProfile("",
+                "",//sin foto
             inputCreateName.text.toString(),
             inputCreateLastName.text.toString(),
             userEmail,
-            inputCreateDNI.text.toString())
+            inputCreateDNI.text.toString(),
+                address?.telefono,
+                address?.distrito,
+                address?.provincia,
+                address?.urbanizacion,
+                address?.nroLote,
+                address?.tipoDireccion,
+                address?.direccion,
+                address?.latitud,
+                address?.longitud,
+                creditCard?.nroTarjeta,
+                creditCard?.vigenciaMes,
+                creditCard?.vigenciaAnio,
+                creditCard?.nombreTitular
+        )
 
 
         auth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, OnCompleteListener{ task ->
             if(task.isSuccessful){
                 task.result?.let { authResult ->
-                    val userID = authResult.user.uid ?: ""
+                    val userID = authResult.user?.uid ?: ""
+                    userInfo.userId = userID
                     dbReference.child(userID).setValue(userInfo).addOnCompleteListener {
                         goHome()
                     }
@@ -144,6 +175,10 @@ class SignInActivity : AppCompatActivity() {
         if (requestCode == CamaraActivity.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             imageCarmaraNew.setImageBitmap(imageBitmap)
+        }else if(requestCode == CreditCardActivity.REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            creditCard = data?.extras?.getParcelable<CreditCard>("CREDITCARD")
+        }else if(requestCode == AdressActivity.REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            address = data?.extras?.getParcelable<UserAddress>("DIRECCION")
         }
     }
 

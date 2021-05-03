@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/fondo1" />
 
     <ImageView
-        android:id="@+id/imagBack3"
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Agregar direccion"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagBack3"
+        app:layout_constraintStart_toEndOf="@+id/closeButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -155,7 +155,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonGuardar"
+        android:id="@+id/guardarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

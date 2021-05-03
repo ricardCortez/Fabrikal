@@ -64,7 +64,7 @@ class FinCompraActivity : AppCompatActivity() {
 
         tarjetaButton.setOnClickListener {
             ordenCompra.metodoPago = "TARJETA"
-            ordenCompra.tokenPago = "XXXXDXXXX"
+            ordenCompra.nroTarjeta = userProfile.nroTarjeta
         }
 
         efectivoButton.setOnClickListener {

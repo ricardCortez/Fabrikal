@@ -15,7 +15,7 @@ data class OrdenCompra(
     var precio : Double? = null,
     var tipoEnvio : String? = null, // TIENDA, DOMICILIO
     var metodoPago : String? = null,
-    var tokenPago : String? = null,//TOKEN VISA
+    var nroTarjeta : String? = null,//TARJETA
     var latDomicilio : String? = null,
     var longDomicilio : String? = null
 ) : Parcelable

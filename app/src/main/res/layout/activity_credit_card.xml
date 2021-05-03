@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/fondo1" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         app:srcCompat="@drawable/card" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/nroTarjetaEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <EditText
-        android:id="@+id/editTextDate4"
+        android:id="@+id/vigenciaEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
@@ -76,10 +76,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/nroTarjetaEditText" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/titularEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
@@ -90,10 +90,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate4" />
+        app:layout_constraintTop_toBottomOf="@+id/vigenciaEditText" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/guardarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
@@ -102,6 +102,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/titularEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
