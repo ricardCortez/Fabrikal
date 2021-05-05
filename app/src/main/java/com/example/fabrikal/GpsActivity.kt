@@ -31,6 +31,7 @@ class GpsActivity : AppCompatActivity(), OnMapReadyCallback {
         map = googleMap
         enableMyLocation()
         updateLocationUI()
+        isPermissionsGranted()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
